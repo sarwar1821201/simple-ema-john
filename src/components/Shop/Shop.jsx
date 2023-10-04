@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { addToDb, getShoppingCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
 
 const Shop = () => {
     
@@ -64,6 +64,12 @@ const Shop = () => {
     }
 
 
+    const handleClearCart= () =>{
+        setCart([])
+        deleteShoppingCart()
+    }
+
+
     return (
         <div className='shop-container'>
 
@@ -74,6 +80,7 @@ const Shop = () => {
                         key={product.id}
                         product={product}
                          handleAddToCart={handleAddToCart}
+                        
                     ></Product>)
                 }
              
@@ -81,7 +88,10 @@ const Shop = () => {
             </div>
 
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart 
+                cart={cart}
+                handleClearCart={handleClearCart}
+                ></Cart>
             </div>
             
         </div>
