@@ -6,7 +6,15 @@ import { AuthContext } from '../providers/AuthProviders';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
+
+    const handleLogOut= () =>{
+        logOut()
+        .then( ()=> {} )
+        .catch(error => {
+            console.log(error)
+        }  )
+    }
 
     return (
         <nav className='header'>
@@ -20,7 +28,7 @@ const Header = () => {
                 <Link to="/register">Register</Link>
 
                 {
-                    user && <span>{user.displayName}</span>
+                    user && <span>{user.email} <button onClick={handleLogOut}>SignOut</button>  </span>
                 }
 
             </div>
