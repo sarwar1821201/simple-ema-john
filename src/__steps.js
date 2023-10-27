@@ -10,3 +10,15 @@
 6. create sign in & login route
 
 */
+
+
+/*
+
+1. create a context provider file
+2. create a context and set providers
+3. set the children props 
+4. set context value
+5. set the provider
+
+
+*/
